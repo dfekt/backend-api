@@ -1,5 +1,5 @@
 {
-  "server_directory": "/Users/kradalby",
-  "server_type": "csgo",
+  "server_directory": "/srv/gs/test/active",
+  "server_type": "test",
   "server_start_file": "run.sh"
 }

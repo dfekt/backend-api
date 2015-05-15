@@ -1,20 +1,3 @@
-var exec = require('child_process').exec
+var serverManager = require("./lib/serverManager.js")
 
-
-var child = exec("tmux list-sess", 
-    function(error, stdout, stderr) {
-        if (error) {
-            console.error(error)
-        }
-
-        if (stdout) {
-            console.log(stdout)
-        }
-
-        if (stderr) {
-            console.log(stderr)
-        }
-    }
-)
-
-console.log(Type(child))
+serverManager.execute_command_on_server("fraternity", "changelevel cs_office")
