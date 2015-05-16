@@ -1,6 +1,12 @@
 var express  = require("express")
+var bodyParser = require("body-parser")
 var srv      = require("./lib/serverManager.js")
 var app      = express()
+
+app.use( bodyParser.json() )        // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+    extended: true
+})) 
 
 var router = express.Router()
 
@@ -22,6 +28,7 @@ router.route('/servers/start')
             if (err) {
                 res.send(err)
             }
+            console.log(data)
             srv.start(data)
             res.json(JSON_SUCCESS)
         })
@@ -36,6 +43,22 @@ router.route('/servers/stop')
             srv.stop(data)
             res.json(JSON_SUCCESS)
         })
+    })
+
+router.route('/servers/execute')
+    .post(function (req, res) {
+
+        var commands = req.body
+        
+        commands.forEach(function(command) {
+            srv.serverlist(function(err, data) {
+                if (err) {
+                    res.send(err)
+                }
+                srv.execute_command(data, command)
+            })
+        })
+        res.json(JSON_SUCCESS)
     })
 
 router.route('/servers/:server/start')
