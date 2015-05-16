@@ -1,0 +1,28 @@
+{
+  "name": "dfekt-backend-api",
+  "version": "0.0.1",
+  "description": "API for controlling SRCDS servers inside TMUX",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.12.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfekt/backend-api.git"
+  },
+  "keywords": [
+    "srcds",
+    "tmux",
+    "api"
+  ],
+  "author": "Kristoffer Dalby",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dfekt/backend-api/issues"
+  },
+  "homepage": "https://github.com/dfekt/backend-api"
+}
