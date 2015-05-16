@@ -61,6 +61,17 @@ router.route('/servers/execute')
         res.json(JSON_SUCCESS)
     })
 
+router.route('/servers/:server/execute')
+    .post(function (req, res) {
+
+        var commands = req.body
+        
+        commands.forEach(function(command) {
+            srv.execute_command([req.params.server], command)
+        })
+        res.json(JSON_SUCCESS)
+    })
+
 router.route('/servers/:server/start')
     .get(function (req, res) {
         srv.start([req.params.server])
