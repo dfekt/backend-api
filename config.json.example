@@ -1,5 +1,6 @@
 {
-  "server_directory": "/Users/kradalby",
+  "game_server_directory": "/srv/gs",
+  "server_locations": "active",
   "server_type": "test",
   "server_start_file": "run.sh"
 }
