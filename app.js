@@ -45,6 +45,17 @@ router.route('/servers/stop')
         })
     })
 
+router.route('/servers/restart')
+    .get(function (req, res) {
+        srv.serverlist(function(err, data) {
+            if (err) {
+                res.send(err)
+            }
+            srv.restart(data)
+            res.json(JSON_SUCCESS)
+        })
+    })
+
 router.route('/servers/execute')
     .post(function (req, res) {
 
@@ -81,6 +92,12 @@ router.route('/servers/:server/start')
 router.route('/servers/:server/stop')
     .get(function (req, res) {
         srv.stop([req.params.server])
+        res.json(JSON_SUCCESS)
+    })
+
+router.route('/servers/:server/restart')
+    .get(function (req, res) {
+        srv.restart([req.params.server])
         res.json(JSON_SUCCESS)
     })
 
