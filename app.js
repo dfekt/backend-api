@@ -72,6 +72,18 @@ router.route('/servers/execute')
         res.json(JSON_SUCCESS)
     })
 
+router.route('/servers/console')
+    .get(function (req, res) {
+        srv.serverlist(function(err, data) {
+            if (err) {
+                res.send(err)
+            }
+            srv.consolelog(data, function(err, data){
+                res.json(data)
+            })
+        })
+    })
+
 router.route('/servers/:server/execute')
     .post(function (req, res) {
 
@@ -99,6 +111,13 @@ router.route('/servers/:server/restart')
     .get(function (req, res) {
         srv.restart([req.params.server])
         res.json(JSON_SUCCESS)
+    })
+
+router.route('/servers/:server/console')
+    .get(function (req, res) {
+        srv.consolelog([req.params.server], function(err, data){
+            res.json(data[req.params.server])
+        })
     })
 
 app.use('/api/v1', router)

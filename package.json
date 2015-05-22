@@ -4,8 +4,8 @@
   "description": "API for controlling SRCDS servers inside TMUX",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.12.4",
     "express": "^4.12.3"
-    "body-parser": "^1.12.4"
   },
   "devDependencies": {},
   "scripts": {
